@@ -16,8 +16,7 @@ public interface IRestBase<S> {
     ResponseEntity<S> update(@RequestBody S s);
     ResponseEntity delete(@PathVariable Long id);
     ResponseEntity<S> getOne(@PathVariable Long id);
-    ResponseEntity<List<S>> getAll(@RequestParam int page,
-                                   @RequestParam int count);
+    ResponseEntity<List<S>> getAll();
     ResponseEntity<S> save(@RequestBody S s);
 
 }

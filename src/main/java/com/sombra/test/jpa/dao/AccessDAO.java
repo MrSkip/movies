@@ -6,6 +6,7 @@ import com.sombra.test.exception.ExceptionMySQL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +23,9 @@ public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
 
     private String objectName = "entry";
 
-    private JpaNew repo;
+    private JpaRepository repo;
 
-    public AccessDAO(JpaNew jpaRepository){
+    public AccessDAO(JpaRepository jpaRepository){
         repo = jpaRepository;
         objectName = ((Class<S>) ((ParameterizedType) getClass()
                 .getGenericSuperclass())
@@ -75,8 +76,8 @@ public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
 
     @Override
     @Transactional(readOnly = true)
-    public List<S> getAll(int page, int count) {
-        List<S> list = repo.findAll(page, count);
+    public List<S> getAll() {
+        List<S> list = repo.findAll();
         log.info("Get all " + objectName + ", count `{}`", list.size());
         return list;
     }

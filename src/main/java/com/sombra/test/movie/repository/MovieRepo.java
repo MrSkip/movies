@@ -2,6 +2,7 @@ package com.sombra.test.movie.repository;
 
 import com.sombra.test.jpa.repository.JpaNew;
 import com.sombra.test.movie.entity.MovieEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.query.Param;
@@ -14,11 +15,13 @@ import java.util.List;
  */
 
 @Repository
-public interface MovieRepo extends JpaNew<MovieEntity, Long> {
+public interface MovieRepo extends JpaRepository<MovieEntity, Long> {
 
-    @Override
-    @Query(value = "select * from movie limit :page, :count", nativeQuery = true)
-    List<MovieEntity> findAll(@Param("page") int page,
-                              @Param("count") int count);
+    @Query(value = "SELECT m.title FROM movie m " +
+            "where m.id not in(select distinct r.movie_id from rating r)", nativeQuery = true)
+    List<String> getTitleThatHaveNoRating();
 
+    @Query(value = "SELECT m.title FROM movie m " +
+            "where m.id in(select distinct r.movie_id from rating r)", nativeQuery = true)
+    List<String> getTitleThatHaveRating();
 }

@@ -11,7 +11,7 @@ public interface IAccessDAO<S> {
     S update(S s);
     void delete(Long id);
     S getOne(Long id);
-    List<S> getAll(int page, int count);
+    List<S> getAll();
     S save(S s);
 
 }

@@ -81,10 +81,9 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
 
     @Override
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<S>> getAll(@RequestParam int page,
-                                          @RequestParam int count) {
+    public ResponseEntity<List<S>> getAll() {
         System.out.println("call method");
-        List<S> list = accessDAO.getAll(page, count);
+        List<S> list = accessDAO.getAll();
         if (list.isEmpty()){
             log.info("Not fount any record in `" + objectName + "`.");
             return ResponseEntity
