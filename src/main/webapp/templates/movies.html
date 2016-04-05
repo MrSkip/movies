@@ -1,0 +1,42 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="well well-sm">
+				<a href="#/movie"><b>Movie</b></a> |
+				<a href="#/rating&user">Rating&user</a>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Movies</div>
+				<div class="panel-body">
+					<div class="col-lg-8">
+						<table class="table">
+							<th>Id</th>
+							<th>Title</th>
+							<th>Director</th>
+							<tbody>
+								<tr ng-repeat="item in movies">
+									<td>{{item.id}}</td>
+									<td>{{item.title}}</td>
+									<td>{{item.director}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-lg-4">
+						<ul>
+							<li ng-repeat="movRat in moviesRating">{{movRat}}</li>
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<button class="btn btn-default" ng-click="addMovie()">Add</button>
+						<div class="btn-group">
+							<button class="btn btn-default" ng-click="getMoviesRating(true)">With rating</button>
+							<button class="btn btn-default" ng-click="getMoviesRating(false)">Without rating</button>
+						</div>
+						<button class="btn btn-default" ng-click="delMovie(9); delMovie(10)">Delete: 9, 10</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

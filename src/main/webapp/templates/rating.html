@@ -1,0 +1,65 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="well well-sm">
+				<a href="#/movie">Movie</a> |
+				<a href="#/rating&user"><b>Rating&user</b></a>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Rating&Users</div>
+				<div class="panel-body">
+					<table class="table" ng-show="ratingShow">
+						<th>Id</th>
+						<th>Rating</th>
+						<th>RatingDate</th>
+						<th>User</th>
+						<tbody>
+							<tr ng-repeat="item in rating">
+								<td>{{item.id}}</td>
+								<td>{{item.rating}}</td>
+								<td>{{item.ratingDate}}</td>
+								<td>{{item.user.name}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table" ng-show="lessShow">
+						<th>MovieId</th>
+						<th>RatingDate</th>
+						<tbody>
+							<tr ng-repeat="item in ratingLess">
+								<td>{{item.movieId}}</td>
+								<td>{{item.ratingDate}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table" ng-show="extendShow">
+						<th>MovieTitle</th>
+						<th>UserName</th>
+						<th>Rating</th>
+						<tbody>
+							<tr ng-repeat="item in ratingExtend">
+								<td>{{item.movieTitle}}</td>
+								<td>{{item.userName}}</td>
+								<td>{{item.rating}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table" ng-show="usersShow">
+						<th>Id</th>
+						<th>Name</th>
+						<tbody>
+							<tr ng-repeat="item in users">
+								<td>{{item.id}}</td>
+								<td>{{item.name}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<button class="btn btn-default" ng-click="getRatingDate(); ratingShow = true; lessShow = false; extendShow = false; usersShow = false">/rating/date</button>
+					<button class="btn btn-default" ng-click="getRatingLess(); lessShow = true; extendShow = false; ratingShow =false; usersShow = false">/rating/less</button>
+					<button class="btn btn-default" ng-click="getRatingExtend(); extendShow = true; ratingShow = false; lessShow = false; usersShow = false">/rating/extend</button>
+					<button class="btn btn-default" ng-click="getUsers(); extendShow = false; ratingShow = false; lessShow = false; usersShow = true">/user</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "movies",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "angular": "~1.4.x",
+    "angular-route": "~1.4.x",
+    "bootstrap":"~3.3.x"
+  },
+  "resolutions": {
+    "angular": "~1.4.x"
+  }
+}
+ 
