@@ -44,11 +44,16 @@
 		}
 
 		$scope.addMovie = function () {
-				var movie = { "title":"Deadscspool","director":"Tim Milller" };
+				var movie = {"id":9, "title":"Deadpool","director":"Tim Miller" };
+				var movie2 = { "id":10, "title":"The 300 spartans","director":"Zak Snyder" };
+
+				$http.post(baseUrl, movie2).success( function (data) {
+					$scope.getMovies();
+				});
 
 				$http.post(baseUrl, movie).success( function (data) {
 					$scope.getMovies();
-			});
+				});
 		}
 
 		$scope.delMovie = function (id) {
